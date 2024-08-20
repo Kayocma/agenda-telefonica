@@ -11,35 +11,40 @@
         <title>CRUD-Agenda</title>
 
     </head>
+
     <body>
+        <nav class="navbar navbar-expand-sm bg-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/">Lista</a>
+                </li>
+            </ul>
+        </nav>
 
-    <nav class="navbar navbar-expand-sm bg-dark">
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/">Lista</a>
-            </li>
-        </ul>
-
-    </nav>
+        <!-- Aqui o Vue.js começa a controlar -->
+        <div id="app" class="text-center">
+            <!-- O conteúdo Vue.js será inserido aqui -->
+        </div>
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 <strong>{{ $message }}</strong>
             </div>            
         @endif
-            <div class="container">
+
+        <!-- Conteúdo HTML existente -->
+        <div class="container">
             <div class="text-right">
                 <a href="create" class="btn btn-dark mt-2">Novo Contato</a>
             </div>
             <table class="table table-hover mt-2">
                 <thead>
                     <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>Imagem</th>
-                    <th>Ações</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Imagem</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,7 +53,7 @@
                             <td>{{ $agenda->nome }}</td>
                             <td>{{ $agenda->telefone }}</td>
                             <td>{{ $agenda->email }}</td>
-                            <td><img src="imagens/{{ $agenda->imagem }}" class="rounded-circle" width="50" heigth="50"/></td>
+                            <td><img src="imagens/{{ $agenda->imagem }}" class="rounded-circle" width="50" height="50"/></td>
                             <td>
                                 <a href="{{ route('edit', $agenda->id) }}" class="btn btn-primary">Editar</a>
                                 
@@ -63,5 +68,9 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Adicione o script Vue.js aqui -->
+        <script src="{{ mix('js/app.js') }}"></script>
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </body>
 </html>
