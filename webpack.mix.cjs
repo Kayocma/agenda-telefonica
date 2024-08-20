@@ -8,7 +8,10 @@ mix.js('resources/js/app.js', 'public/js')
    });
 
 mix.options({
-    processCssUrls: false
+    processCssUrls: false,
+    globalVueOptions: {
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
+    }
 });
 
 if (mix.inProduction()) {
