@@ -21,11 +21,6 @@
             </ul>
         </nav>
 
-        <!-- Aqui o Vue.js começa a controlar -->
-        <div id="app" class="text-center">
-            <!-- O conteúdo Vue.js será inserido aqui -->
-        </div>
-
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 <strong>{{ $message }}</strong>
@@ -34,8 +29,10 @@
 
         <!-- Conteúdo HTML existente -->
         <div class="container">
-            <div class="text-right">
-                <a href="create" class="btn btn-dark mt-2">Novo Contato</a>
+            <div id="app" class="text-right">
+                <!-- Botão para abrir o modal -->
+                <button @click="openModal" class="btn btn-dark mt-2">Novo Contato</button>
+                <create-contact-modal ref="createContactModal"></create-contact-modal>
             </div>
             <table class="table table-hover mt-2">
                 <thead>
@@ -55,13 +52,19 @@
                             <td>{{ $agenda->email }}</td>
                             <td><img src="imagens/{{ $agenda->imagem }}" class="rounded-circle" width="50" height="50"/></td>
                             <td>
-                                <a href="{{ route('edit', $agenda->id) }}" class="btn btn-primary">Editar</a>
-                                
-                                <form method="POST" class="d-inline" action="{{ route('destroy', $agenda->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Deletar</button> 
-                                </form>                            
+                                <div class="d-flex">
+                                    <div>
+                                        <a href="{{ route('edit', $agenda->id) }}" class="btn btn-primary flex-grow-1 mr-1">Editar</a>
+                                    </div>
+
+                                    <div>
+                                        <form method="POST" class="d-inline flex-grow-1" action="{{ route('destroy', $agenda->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger w-100">Deletar</button> 
+                                        </form>    
+                                    </div>                        
+                                </div>                           
                             </td>
                         </tr>
                     @endforeach

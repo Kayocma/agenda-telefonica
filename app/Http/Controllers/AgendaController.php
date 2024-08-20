@@ -76,7 +76,7 @@ class AgendaController extends Controller
             'nome' => 'required|string|max:255',
             'telefone' => 'required|string|max:255',
             'email' => 'required|string|max:255',
-            'imagem' => 'required|mimes:jpg,png,jpeg|max:2048',
+            'imagem' => 'nullable|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         $agenda = Agenda::find($id);

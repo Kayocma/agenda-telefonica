@@ -1,13 +1,20 @@
-import './bootstrap.js';
 import { createApp } from 'vue';
-import App from './components/App.vue';
+import CreateContactModal from './components/CreateContactModal.vue';
 
-const appContainer = document.getElementById('app');
+const app = createApp({
+    components: {
+        'create-contact-modal': CreateContactModal
+    },
+    data() {
+        return {
+            showModal: false
+        };
+    },
+    methods: {
+        openModal() {
+            this.$refs.createContactModal.openModal();
+        }
+    }
+});
 
-if (appContainer.__vue_app__) {
-  appContainer.__vue_app__.unmount();
-}
-
-const app = createApp(App);
 app.mount('#app');
-appContainer.__vue_app__ = app; // Armazena a nova instância

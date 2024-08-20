@@ -17,7 +17,7 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-light" href="/">Contato</a>
+                <a class="nav-link text-light" href="/">Index</a>
             </li>
         </ul>
 
@@ -70,12 +70,13 @@
                                     <span class="text-danger">{{ $errors->first('imagem') }}</span>
                                 @endif
                             </div>
-                            <button type="submit" class="btn btn-dark">Atualizar</button>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark">Atualizar</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
- 
-</body>
+    </body>
 </html>
