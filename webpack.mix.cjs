@@ -1,10 +1,25 @@
 const mix = require('laravel-mix');
+const webpack = require('webpack');
 
 mix.js('resources/js/app.js', 'public/js')
-   .vue({ version: 3 })  // Especificando explicitamente a versão do Vue
+   .vue({ version: 3 })
    .sass('resources/sass/app.scss', 'public/css')
    .babelConfig({
        presets: ['@babel/preset-env']
+   })
+   .webpackConfig({
+       resolve: {
+           fallback: {
+               "buffer": require.resolve("buffer/"),
+               "process": require.resolve("process/browser")
+           }
+       },
+       plugins: [
+           new webpack.ProvidePlugin({
+               Buffer: ['buffer', 'Buffer'],
+               process: 'process/browser',
+           }),
+       ],
    });
 
 mix.options({

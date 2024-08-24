@@ -13,13 +13,18 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-sm bg-dark">
+    <nav class="navbar navbar-expand-sm bg-dark">
+        <div class="container">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-light" href="/">Lista</a>
                 </li>
             </ul>
-        </nav>
+            <div class="ml-auto">
+                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </nav>
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">

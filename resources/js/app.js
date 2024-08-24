@@ -1,20 +1,7 @@
-import { createApp } from 'vue';
-import CreateContactModal from './components/CreateContactModal.vue';
+import './bootstrap.js';
 
-const app = createApp({
-    components: {
-        'create-contact-modal': CreateContactModal
-    },
-    data() {
-        return {
-            showModal: false
-        };
-    },
-    methods: {
-        openModal() {
-            this.$refs.createContactModal.openModal();
-        }
-    }
-});
+import Alpine from 'alpinejs';
 
-app.mount('#app');
+window.Alpine = Alpine;
+
+Alpine.start();
