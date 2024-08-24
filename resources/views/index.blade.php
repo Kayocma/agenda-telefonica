@@ -21,7 +21,13 @@
                 </li>
             </ul>
             <div class="ml-auto">
-                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <button type="submit" class="text-sm text-white hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {{ __('Logout') }}
+                    </button>
+                </form>
             </div>
         </div>
     </nav>
